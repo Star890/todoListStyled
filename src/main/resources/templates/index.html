@@ -1,42 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<title>Todo List</title>
-		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
-		crossorigin="anonymous">
-	</head>
-	<body>
-		<div class="container bg-secondary">
-				<h1>Todo List</h1>	
-				<table>
-					<tr>
-						<td><span>1/1/2020</span> task 1</td>
-						<td>
-							<button class="btn btn-primary">Completed</button>
-							<button>Edit</button>
-							<button>Delete</button>
-						</td>
-					</tr>
-					
-					<tr>
-						<td><span>1/1/2020</span> task 1</td>
-						<td>
-							<button class="btn btn-primary">Completed</button>
-							<button>Edit</button>
-							<button>Delete</button>
-						</td>
-					</tr>
-				</table>			
-			<div class="card">
-				<div class="card-body">created: <span>1/1/2020</span> Task goes here</div>
-				<div class="card-footer">
-					<button class="btn btn-primary">Completed</button>
-					<button>Edit</button>
-					<button>Delete</button>
+
+<head>
+	<title>Todo List</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container jumbotron bg-secondary">
+	<div th:replace="fragments/navbar"></div>
+			<div th:each="todo: ${todos}" class="card  m-2" >
+				 <div class="card-body">
+					 <div class="card-title">created: <span>1/1/2020</span></div>
+					 <form class="d-inline" id="task_text" th:action="@{'/completed/{id}' (id=${todo.id})}" th:method="put">
+						<button class="btn btn-secondary btn-sm" type="submit" id="completed" onclick="status()">Completed</button>
+						<div class="d-inline" th:text="${todo.completed}"></div>
+					</form>
+					<div class="card-text d-inline-block"><span th:text="${todo.task}"></span></div>
+					<div class="card-footer">
+						<a th:href="@{'/edit/{id}' (id=${todo.id})}"><button class="btn btn-dark">Edit</button></a>
+						<form class="d-inline" th:action="@{'/delete/{id}' (id=${todo.id})}" th:method="delete">
+							<button class="btn btn-default">Delete</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" 
-		crossorigin="anonymous"></script>
-	</body>
+	<script src="/app.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+		integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous">
+	</script>
+</body>
+
 </html>
