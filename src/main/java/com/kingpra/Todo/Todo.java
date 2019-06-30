@@ -23,4 +23,5 @@ public class Todo {
 	private String task;
 	private boolean completed;
 	private long date;
+
 }
