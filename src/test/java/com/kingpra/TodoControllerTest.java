@@ -1,8 +1,8 @@
 package com.kingpra;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.Assert.assertNotNull;
 
-import org.junit.jupiter.api.Disabled;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.kingpra.Todo.Todo;
 import com.kingpra.Todo.TodoController;
 import com.kingpra.Todo.TodoRepository;
 import com.kingpra.Todo.TodoService;
@@ -32,10 +33,17 @@ class TodoControllerTest {
 	@MockBean
 	private TodoService todoService;
 
-	@Disabled
+	@Before
+	public void setup() {
+		Todo todo = new Todo(100L, "test task", false, 100L);
+	}
+
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	public void getByIdTest() {
+		Todo todo = todoRepo.findById(100L).orElse(null);
+		// assertEquals(100L, todo.getId());
+		assertNotNull("should return a task object", todo);
+
 	}
 
 }
