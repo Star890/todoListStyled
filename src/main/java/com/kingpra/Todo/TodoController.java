@@ -75,5 +75,4 @@ public class TodoController {
 		model.addAttribute("todos", todoRepo.findAll());
 		return "index";
 	}
-
 }
