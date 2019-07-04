@@ -26,6 +26,10 @@ public class TodoController {
 	@Autowired
 	private TodoService todoService;
 
+	public TodoController(TodoRepository repo) {
+		this.todoRepo = repo;
+	}
+
 	@GetMapping("/")
 	public String getIndexPage(Model model) {
 		model.addAttribute("todos", todoRepo.findAll());
