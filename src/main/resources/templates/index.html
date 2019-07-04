@@ -16,14 +16,14 @@
 				<div class="card-title" id="">created: <span>1/1/2020</span></div>
 
 				<form class="d-inline" id="task_text" th:action="@{'/completed/{id}' (id=${todo.id})}" th:method="put">
-				     
-				     <!-- only one button is displayed at a time depending on if the task is completed or not -->
-					<button th:class="${!todo.completed} ? 'btn btn-success btn-sm' : 'hide'" type="submit" id="completed"
-						th:value="${todo.completed}">In Progress</button>
-					<button th:class="${todo.completed} ? 'btn btn-secondary btn-sm text-dark': 'hide'" type="submit" id="completed"
-						th:value="${todo.completed}">Completed</button>
+
+					<!-- only one button is displayed at a time depending on if the task is completed or not -->
+					<button th:class="${!todo.completed} ? 'btn btn-success btn-sm' : 'hide'" type="submit"
+						id="completed" th:value="${todo.completed}">In Progress</button>
+					<button th:class="${todo.completed} ? 'btn btn-secondary btn-sm text-dark': 'hide'" type="submit"
+						id="completed" th:value="${todo.completed}">Completed</button>
 				</form>
-				<div class="card-text d-inline-block"><span th:class="${todo.completed} ? 'crossout'" 
+				<div class="card-text d-inline-block"><span th:class="${todo.completed} ? 'crossout'"
 						th:text="${todo.task}"></span></div>
 				<div class="card-footer">
 					<a th:href="@{'/edit/{id}' (id=${todo.id})}"><button class="btn btn-dark">Edit</button></a>
@@ -31,10 +31,13 @@
 						<button class="btn btn-default">Delete</button>
 					</form>
 				</div>
+
+				<!-- testing trello api -->
+				<a class="btn btn-danger" onclick="trello()">make trello happen</a>
 			</div>
 		</div>
-		
-		
+
+
 	</div>
 	<script src="/app.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"

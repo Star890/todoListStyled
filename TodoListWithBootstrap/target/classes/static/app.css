@@ -1,0 +1,41 @@
+.crossout {
+	text-decoration: line-through;
+}
+
+.hide {
+	display: none;
+}
+
+body{
+	background-color: #F1E3FE;
+}
+
+.container{
+	background-color: rgba(255, 255, 255, 0.8);
+/* 	padding-top: 10px;
+ */	padding-bottom: 10px;
+	border-radius: 5px; 
+	color:black;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	align-content: center;
+	font-color: #3c2e48;
+}
+.jumbotron {
+    background-color:transparent !important; 
+    text-info;
+}
+
+.nav {
+	background-color: #74607B;
+}
+.card-body{
+	
+		{
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+        
+}
+}

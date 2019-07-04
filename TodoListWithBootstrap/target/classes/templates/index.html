@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Todo List</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="../../app.css" />
+</head>
+
+<body>
+
+<!-- 	<div class="container jumbotron bg-secondary">
+ -->		<div th:replace="fragments/navbar"></div>
+ <div class="jumbotron bg-dark text-muted">
+  <h1 class="display-5">Easily manage all of your task!</h1>
+  <p class="lead">Then go enjoy life!.</p>
+  <hr class="my-4">
+  <a class="btn btn-primary btn-lg" href="@{/new}" role="button">Get Started it's free!</a>
+</div>
+
+		<div th:each="todo: ${todos}" class="card  m-2">
+			<div class="card-body">
+				<div class="card-title" id="">created: <span>1/1/2020</span></div>
+
+				<form class="d-inline" id="task_text" th:action="@{'/completed/{id}' (id=${todo.id})}" th:method="put">
+				     
+				     <!-- only one button is displayed at a time depending on if the task is completed or not -->
+					<button th:class="${!todo.completed} ? 'btn btn-success btn-sm' : 'hide'" type="submit" id="completed"
+						th:value="${todo.completed}">In Progress</button>
+					<button th:class="${todo.completed} ? 'btn btn-secondary btn-sm text-dark': 'hide'" type="submit" id="completed"
+						th:value="${todo.completed}">Completed</button>
+				</form>
+				<div class="card-text d-inline-block"><span th:class="${todo.completed} ? 'crossout'" 
+						th:text="${todo.task}"></span></div>
+				<div class="card-footer">
+					<a th:href="@{'/edit/{id}' (id=${todo.id})}"><button class="btn btn-dark">Edit</button></a>
+					<form class="d-inline" th:action="@{'/delete/{id}' (id=${todo.id})}" th:method="delete">
+						<button class="btn btn-default">Delete</button>
+						
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+				<p class="text-center">Create your to do list!</p>
+		
+		<img src="https://www.hounddogdigital.com/wp-content/uploads/2017/04/mobile_apps.jpg" class="rounded mx-auto d-block"  alt="Responsive image" width="400px" height="400px"></div>
+		<div class= "container">
+		<p class="text-center">Tasky gives you the confidence that everything’s organized and accounted for, so you can make progress on the 
+		things that are important to you. Create tasks that allow you to update the status, edit and delete!</p>
+		<!-- </div> -->
+		<footer>
+  <!-- <div class="container"> -->
+    <div class="row">
+    <div class="card text-center" style="width: 75rem;">
+  <div class="card-header">
+    <h2><div class="display-4">Unclutter Your Mind With Tasky</h2>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><!-- Tasky ToDo Lists --></h5>
+    <p class="card-text">Try it today!</p>
+    <a href="#" class="btn btn-primary">Download</a>
+  </div>
+  <div class="card-footer text-muted">
+   
+  </div>
+</div>
+       <!-- <div class="col-md-4"> © 2019</div>
+      <div class="col-md-4">
+        <ul class=""> 
+          <li><a href="text-center">Contact Us </a></li>
+          <li><a href="text-center">Get Support</a></li>
+          <li><a href="text-center">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <p class="text-center"><a href="#">Follow Us</a></p>
+     </div> -->
+    </div>
+  </div>
+</footer>
+
+	
+	<script src="/app.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+		integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous">
+	</script>
+</body>
+
+</html>

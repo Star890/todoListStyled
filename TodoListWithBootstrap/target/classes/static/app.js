@@ -1,7 +1,7 @@
 //document.addEventListener('load', status());
 
 function status(val) {
-  console.log("this is val", val);
+    console.log("this is val", val);
   console.log("hello world!! I'm back");
   el = document.querySelector(".testing");
   //el = document.querySelectorAll(".testing");
@@ -12,8 +12,4 @@ function status(val) {
   } else {
     el.classList.add("test");
   }
-}
-
-function trello() {
-  console.log("hello peoples");
 }

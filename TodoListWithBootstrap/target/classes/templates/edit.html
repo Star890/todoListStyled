@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Todo List</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container jumbotron bg-secondary">
+	<div th:replace="fragments/navbar"></div>
+		<div class="card bg-secondary">
+			<div class="card-header">
+			<h1>Edit Todo</h1>
+			</div>
+			<div class="card-body">
+				<form class="form form-group" action="#"  th:action="@{'/edit/{id}' (id=${id})}" th:method="put">
+				<input class="form-control" placeholder="Your Task is currently empty" th:value="${todo.task}" name="task"/><br/>
+				<button class="btn btn-dark form-control" type="submit">Submit Changes</button> 
+			</form>
+			</div>
+		
+		</div>
+	</div>
+	<script src="/app.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+		integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous">
+	</script>
+</body>
+</html>

@@ -28,7 +28,7 @@ public class TodoListTest {
 		Todo todoFound = todoRepo.findById(1L).orElse(null);
 
 		// then
-		assert (task.equals(task));
+		// assert
 		// assertThat(todoFound.getTask()).equals(task);
 	}
 
